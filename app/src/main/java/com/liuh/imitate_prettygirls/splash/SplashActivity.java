@@ -1,15 +1,12 @@
 package com.liuh.imitate_prettygirls.splash;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import com.liuh.imitate_prettygirls.base.AppActivity;
+import com.liuh.imitate_prettygirls.base.BaseFragment;
 
-import com.liuh.imitate_prettygirls.R;
-
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends AppActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
+    protected BaseFragment getFirstFragment() {
+        return null;
     }
 }
