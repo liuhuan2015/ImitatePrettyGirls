@@ -2,4 +2,6 @@
     <string name="app_name">Imitate-PrettyGirls</string>
 
     <string name="version_str">Imitate-PrettyGirls\npleasecallmecainiao</string>
+    <string name="action_about">关于我</string>
+
 </resources>
