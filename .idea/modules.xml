@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/ImitatePrettyGirls.iml" filepath="$PROJECT_DIR$/ImitatePrettyGirls.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/handlerthread-review/handlerthread-review.iml" filepath="$PROJECT_DIR$/handlerthread-review/handlerthread-review.iml" />
+      <module fileurl="file://$PROJECT_DIR$/intentservice-review/intentservice-review.iml" filepath="$PROJECT_DIR$/intentservice-review/intentservice-review.iml" />
     </modules>
   </component>
 </project>
