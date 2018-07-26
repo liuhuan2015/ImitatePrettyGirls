@@ -25,7 +25,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        InitializeService.start(this);
+//        InitializeService.start(this);
 
         mApplication = this;
 

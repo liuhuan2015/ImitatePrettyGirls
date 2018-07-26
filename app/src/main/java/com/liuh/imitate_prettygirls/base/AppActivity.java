@@ -23,7 +23,24 @@ public abstract class AppActivity extends BaseActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        setTheme();
         super.onCreate(savedInstanceState);
+        setContentView(getContentViewId());
+
+        if (getIntent() != null) {
+            handleIntent(getIntent());
+        }
+
+        //避免重复添加Fragment
+        if (getSupportFragmentManager().getFragments() == null
+                || getSupportFragmentManager().getFragments().size() == 0) {
+            BaseFragment firstFragment = getFirstFragment();
+            if (null != firstFragment) {
+                addFragment(firstFragment);
+            }
+        }
+
+        MyActivityManager.getInstance().addActivity(this);
     }
 
     @Override
