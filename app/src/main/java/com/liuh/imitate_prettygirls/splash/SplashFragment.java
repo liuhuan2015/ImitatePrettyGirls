@@ -13,8 +13,8 @@ import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 import com.liuh.imitate_prettygirls.R;
-import com.liuh.imitate_prettygirls.app.PgBaseFragment;
 import com.liuh.imitate_prettygirls.base.MyActivityManager;
+import com.liuh.imitate_prettygirls.base.PgBaseFragment;
 import com.liuh.imitate_prettygirls.home.HomeActivity;
 
 import butterknife.BindView;

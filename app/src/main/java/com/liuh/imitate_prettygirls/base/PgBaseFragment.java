@@ -1,13 +1,10 @@
-package com.liuh.imitate_prettygirls.app;
-
-import com.liuh.imitate_prettygirls.base.BaseFragment;
+package com.liuh.imitate_prettygirls.base;
 
 import rx.Subscription;
 import rx.subscriptions.CompositeSubscription;
 
 /**
- * Date: 2018/7/24 18:40
- * Description:
+ * Created by huan on 2018/7/29.
  */
 
 public abstract class PgBaseFragment extends BaseFragment {
@@ -16,7 +13,6 @@ public abstract class PgBaseFragment extends BaseFragment {
 
     protected void addSubscribe(Subscription subscription) {
         if (mCompositeSubscription == null || mCompositeSubscription.isUnsubscribed()) {
-            //recreate mCompositeSubscription
             mCompositeSubscription = new CompositeSubscription();
         }
         mCompositeSubscription.add(subscription);

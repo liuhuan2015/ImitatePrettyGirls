@@ -29,6 +29,8 @@
         <activity android:name=".about.AboutActivity" />
 
         <service android:name=".app.InitializeService" />
+
+        <activity android:name=".girl.GirlActivity" />
     </application>
 
 </manifest>
