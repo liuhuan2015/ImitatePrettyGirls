@@ -94,13 +94,13 @@ public class GirlsFragment extends PgBaseFragment
             @Override
             public void onItemClick(int position, BaseViewHolder holder) {
                 Intent intent = new Intent(mActivity, GirlActivity.class);
+                //item被点击后，又把所有的数据都传递了过去，在那边用viewpager来进行展示
                 intent.putParcelableArrayListExtra("girls", data);
                 intent.putExtra("current", position);
 
                 ActivityOptionsCompat options = ActivityOptionsCompat
                         .makeScaleUpAnimation(holder.itemView, holder.itemView.getWidth() / 2,
                                 holder.itemView.getHeight() / 2, 0, 0);
-                startActivity(intent, options.toBundle());
                 startActivity(intent, options.toBundle());
             }
         });

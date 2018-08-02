@@ -41,6 +41,11 @@ public class HomeActivity extends AppActivity {
     }
 
     @Override
+    protected BaseFragment getFirstFragment() {
+        return GirlsFragment.getInstance();
+    }
+
+    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
@@ -79,11 +84,6 @@ public class HomeActivity extends AppActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    protected BaseFragment getFirstFragment() {
-        return GirlsFragment.getInstance();
     }
 
     @Override

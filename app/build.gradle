@@ -29,6 +29,10 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
+    //一个可以从图片(Bitmap)中提取颜色的帮助类，可以使UI更加美观，根据图片动态的显示相应的颜色
+    //A helper class to extract prominent colors from an image.
+    implementation 'com.android.support:palette-v7:27.1.1'
+
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
@@ -48,6 +52,7 @@ dependencies {
     implementation 'jp.wasabeef:glide-transformations:2.0.1'
 
     implementation 'com.jude:easyrecyclerview:4.0.2'
+
 
 
 }

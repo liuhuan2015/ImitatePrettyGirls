@@ -1,6 +1,7 @@
 package com.liuh.imitate_prettygirls.girl;
 
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
@@ -8,27 +9,23 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 
 import com.liuh.imitate_prettygirls.R;
 import com.liuh.imitate_prettygirls.base.AppActivity;
 import com.liuh.imitate_prettygirls.base.BaseFragment;
 import com.liuh.imitate_prettygirls.home.GirlsFragment;
+import com.liuh.imitate_prettygirls.util.ColorUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class GirlActivity extends AppActivity {
+public class GirlActivity extends AppActivity implements GirlFragment.OnGirlChange {
 
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
 
     GirlFragment mGirlFragment;
-
-    @Override
-    protected BaseFragment getFirstFragment() {
-
-        return null;
-    }
 
     @Override
     protected int getContentViewId() {
@@ -38,6 +35,14 @@ public class GirlActivity extends AppActivity {
     @Override
     protected int getFragmentContentId() {
         return R.id.girls_fragment;
+    }
+
+    @Override
+    protected BaseFragment getFirstFragment() {
+
+        mGirlFragment = GirlFragment.newInstance(getIntent().getParcelableArrayListExtra("girls"),
+                getIntent().getIntExtra("current", 0));
+        return mGirlFragment;
     }
 
     @Override
@@ -95,4 +100,13 @@ public class GirlActivity extends AppActivity {
         overridePendingTransition(R.anim.slide_left_in, R.anim.slide_right_out);
     }
 
+    @Override
+    public void change(int color) {
+        mToolbar.setBackgroundColor(color);
+        if (Build.VERSION.SDK_INT >= 21) {
+            Window window = getWindow();
+            window.setStatusBarColor(ColorUtil.colorBurn(color));
+            window.setNavigationBarColor(ColorUtil.colorBurn(color));
+        }
+    }
 }
