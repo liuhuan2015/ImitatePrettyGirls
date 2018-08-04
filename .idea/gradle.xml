@@ -11,6 +11,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/handlerthread-review" />
             <option value="$PROJECT_DIR$/intentservice-review" />
+            <option value="$PROJECT_DIR$/lambda-learn" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

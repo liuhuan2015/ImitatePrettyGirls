@@ -14,7 +14,6 @@ import android.view.Window;
 import com.liuh.imitate_prettygirls.R;
 import com.liuh.imitate_prettygirls.base.AppActivity;
 import com.liuh.imitate_prettygirls.base.BaseFragment;
-import com.liuh.imitate_prettygirls.home.GirlsFragment;
 import com.liuh.imitate_prettygirls.util.ColorUtil;
 
 import butterknife.BindView;
@@ -34,7 +33,7 @@ public class GirlActivity extends AppActivity implements GirlFragment.OnGirlChan
 
     @Override
     protected int getFragmentContentId() {
-        return R.id.girls_fragment;
+        return R.id.girl_fragment;
     }
 
     @Override

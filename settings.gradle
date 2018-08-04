@@ -1,1 +1,1 @@
-include ':app', ':handlerthread-review', ':intentservice-review'
+include ':app', ':handlerthread-review', ':intentservice-review', ':lambda-learn'

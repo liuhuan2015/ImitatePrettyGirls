@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.provider.SyncStateContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.ViewPager;
 import android.support.v7.graphics.Palette;
 import android.view.LayoutInflater;
@@ -14,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.liuh.imitate_prettygirls.R;
+import com.liuh.imitate_prettygirls.app.Constants;
 import com.liuh.imitate_prettygirls.base.PgBaseFragment;
 import com.liuh.imitate_prettygirls.data.bean.GirlsBean;
 import com.liuh.imitate_prettygirls.util.BitmapUtil;
@@ -24,11 +27,13 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import rx.Observable;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by huan on 2018/7/29.
  */
-
 public class GirlFragment extends PgBaseFragment implements ViewPager.OnPageChangeListener {
 
     @BindView(R.id.view_pager)
@@ -154,8 +159,21 @@ public class GirlFragment extends PgBaseFragment implements ViewPager.OnPageChan
     }
 
     public void saveGirl() {
-
         String imgUrl = datas.get(mViewPager.getCurrentItem()).getUrl();
+        PinchImageView imageView = getCurrentImageView();
+        Bitmap bitmap = BitmapUtil.drawableToBitmap(imageView.getDrawable());
+
+        addSubscribe(Observable.just(BitmapUtil.saveBitmap(bitmap, Constants.dir,
+                imgUrl.substring(imgUrl.lastIndexOf("/") + 1, imgUrl.length()), true))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(isSuccess -> {
+                    if (isSuccess) {
+                        Snackbar.make(mRootView, "下载好了呦", Snackbar.LENGTH_LONG).show();
+                    } else {
+                        Snackbar.make(mRootView, "下载出错了呦", Snackbar.LENGTH_LONG).show();
+                    }
+                }, RxUtils.IgnoreErrorProcessor));
 
 
     }
