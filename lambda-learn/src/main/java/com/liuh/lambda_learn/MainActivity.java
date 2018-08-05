@@ -1,5 +1,6 @@
 package com.liuh.lambda_learn;
 
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,13 +9,17 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.Comparator;
 import java.util.function.Function;
+import java.util.function.IntBinaryOperator;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button btn1;
 
     private ListView mListView;
+
+    int x, y;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +56,28 @@ public class MainActivity extends AppCompatActivity {
 
         }));
 
+        getRunnable().run();
+
+        sum();
+
+        getVoid();
+    }
+
+    private void getVoid() {
+//        (int x, int y) -> System.out.println("sum: " + (x + y));
+    }
+
+    @NonNull
+    private IntBinaryOperator sum() {
+        return (int x, int y) -> {
+            return x + y;
+        };
+    }
+
+
+    @NonNull
+    private Runnable getRunnable() {
+        return () -> System.out.println("Hello Lambda !");
     }
 
     Function<String, Integer> fun = s -> Integer.parseInt(s);

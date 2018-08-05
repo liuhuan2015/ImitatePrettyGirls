@@ -1,4 +1,4 @@
-Android Lambda学习
+Android Lambda表达式学习
 >学习目标文章[android lambda的使用总结及运行原理](https://blog.csdn.net/smileiam/article/details/73921066)
 #### 前言
 为了支持函数式编程，Java 8引入了Lambda表达式，Android N已经开始支持Java 8了。<br>
