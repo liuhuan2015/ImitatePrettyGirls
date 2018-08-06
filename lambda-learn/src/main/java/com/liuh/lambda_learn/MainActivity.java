@@ -1,6 +1,6 @@
 package com.liuh.lambda_learn;
 
-import android.support.annotation.NonNull;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,12 +9,11 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import java.util.concurrent.Callable;
-import java.util.function.Function;
-import java.util.function.IntBinaryOperator;
-import java.util.function.UnaryOperator;
 import java.util.stream.Stream;
 
+/**
+ * Lambda表达式的有些语法只有在Android 7.0( API 24 )及以上版本才可以使用
+ */
 public class MainActivity extends AppCompatActivity {
 
     private Button btn1;
@@ -53,12 +52,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //使用Lambda表达式
-        mListView.setOnItemClickListener(((parent, view, position, id) -> {
-            //do something
+//        mListView.setOnItemClickListener(((parent, view, position, id) -> {
+//            do something
+//
+//        }));
 
-        }));
-
-        getRunnable().run();
+//        getRunnable().run();
 
 //        sum();
 
@@ -84,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
         //定义一个递归函数，注意需用this限定
 //        UnaryOperator<Integer> factorial = i -> i == 0 ? 1 : i * this.factorial.apply(i - 1);
 //        System.out.println(factorial.apply(3));
+
         //生成并打印5个随机数
         Stream.generate(Math::random).limit(5).forEach(System.out::println);
 
@@ -93,18 +93,18 @@ public class MainActivity extends AppCompatActivity {
 //        (int x, int y) -> System.out.println("sum: " + (x + y));
     }
 
-    @NonNull
-    private IntBinaryOperator sum() {
-        return (int x, int y) -> {
-            return x + y;
-        };
-    }
+//    @NonNull
+//    private IntBinaryOperator sum() {
+//        return (int x, int y) -> {
+//            return x + y;
+//        };
+//    }
 
-    @NonNull
-    private Runnable getRunnable() {
-        return () -> System.out.println("Hello Lambda !");
-    }
+//    @NonNull
+//    private Runnable getRunnable() {
+//        return () -> System.out.println("Hello Lambda !");
+//    }
 
-    Function<String, Integer> fun = s -> Integer.parseInt(s);
+//    Function<String, Integer> fun = s -> Integer.parseInt(s);
 
 }

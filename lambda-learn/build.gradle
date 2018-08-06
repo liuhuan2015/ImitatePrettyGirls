@@ -5,7 +5,7 @@ android {
 
     defaultConfig {
         applicationId "com.liuh.lambda_learn"
-        minSdkVersion 24
+        minSdkVersion 19
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -24,6 +24,7 @@ android {
         sourceCompatibility 1.8
         targetCompatibility 1.8
     }
+
 }
 
 dependencies {
