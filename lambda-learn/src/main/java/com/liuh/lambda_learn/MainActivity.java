@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         //定义一个递归函数，注意需用this限定
 //        UnaryOperator<Integer> factorial = i -> i == 0 ? 1 : i * this.factorial.apply(i - 1);
 //        System.out.println(factorial.apply(3));
-
+        //生成并打印5个随机数
         Stream.generate(Math::random).limit(5).forEach(System.out::println);
 
     }

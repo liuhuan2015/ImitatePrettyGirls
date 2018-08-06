@@ -262,8 +262,9 @@ Stream.generate(Supplier<T> s)就是一个生成器函数。其中参数Supplier
 例如：
 ```java
    //生成并打印5个随机数
-   Stream.
+   Stream.generate(Math::random).limit(5).forEach(System.out::println);
 ```
+
 
 
 
