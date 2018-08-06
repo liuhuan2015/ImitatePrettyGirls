@@ -9,9 +9,11 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import java.util.Comparator;
+import java.util.concurrent.Callable;
 import java.util.function.Function;
 import java.util.function.IntBinaryOperator;
+import java.util.function.UnaryOperator;
+import java.util.stream.Stream;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -58,18 +60,32 @@ public class MainActivity extends AppCompatActivity {
 
         getRunnable().run();
 
-        sum();
+//        sum();
 
-        getVoid();
+//        getVoid();
 
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("This is from an anonymous class.");
-            }
-        });
+//        Thread thread = new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                System.out.println("This is from an anonymous class.");
+//            }
+//        });
+//
+//        Thread thread1 = new Thread(() -> System.out.println("this is from an anonymous method (lambda exp)."));
 
-        Thread thread1 = new Thread(() -> System.out.println("this is from an anonymous method (lambda exp)."));
+        //嵌套的Lambda表达式
+//        Callable<Runnable> c1 = () -> () -> System.out.println("Nested Lambda");
+//        c1.call().run();
+
+        //用在条件表达式中
+//        Callable<Integer> c2 = true ? (() -> 42) : (() -> 24);
+//        System.out.println(c2.call());
+
+        //定义一个递归函数，注意需用this限定
+//        UnaryOperator<Integer> factorial = i -> i == 0 ? 1 : i * this.factorial.apply(i - 1);
+//        System.out.println(factorial.apply(3));
+
+        Stream.generate(Math::random).limit(5).forEach(System.out::println);
 
     }
 

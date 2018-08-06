@@ -178,9 +178,99 @@ filter方法的参数是Predicate类型，forEach方法的参数是Consumer类�
 **下面看一个也许是最常用的收集器方法，groupingBy:**
 ```java
    //给出一个String类型的数组，找出其中各个素数，并统计其出现次数
-   
-
+   public void primaryOccurrence(String... numbers){
+      List<String> l=Arrays.asList(numbers);
+      Map<Integer,Integer> r=l.stream()
+                 .map(e->new Integer(e))
+                 .filter(e->Primes.isPrime(e))
+                 .collect(Collectors.groupingBy(p->p, Collectors.summingInt(p->1)));
+      System.out.println("primaryOccurrence result is: " + r);
+   }
 ```
+注意这一行：<br>
+```java
+   Collectors.groupingBy(p->p, Collectors.summingInt(p->1));
+```
+它的意思是：把结果收集到一个Map中，用统计到的各个素数自身作为键，其出现次数作为值。<br>
+
+**下面是一个reduce的例子**
+```java
+   //给出一个String类型的数组，求其中所有不重复素数的和
+   public void distinctPrimarySum(String... numbers){
+        List<String> l=Arrays.aslist<numbers>;
+        int sum=l.stream()
+            .map(e->new Integer(e))
+            .filter(e->Primes.isPrime(e))
+            .distinct()
+            .reduce(0,(x,y)->x+y);//equivalent to .sum()
+        System.out.println("distinctPrimarySum result is: " + sum);    
+   }
+```
+reduce方法用来产生单一的一个最终结果。<br>
+
+流有很多预定义的reduce操作，如sum()，max()，min()等。
+
+再举一个现实世界中的例子，比如：<br>
+```java
+   //统计年龄在25-35岁的男女人数、比例
+   public void boysAndGirls(List<Person> persons){
+        Map<Integer,Integer> result=persons.parallelStream()
+                                       .filter(p->p.getAge()>=25&&p.getAge()<=35)
+                                       .collect(Collectors.groupingBy(p->p.getSex(),Collectors.summingInt(p->1))));
+        System.out.print("boysAndGirls result is " + result);
+        System.out.println(", ratio (male : female) is " + (float)result.get(Person.MALE)/result.get(Person.FEMALE));
+   }
+```
+**3.3 λ表达式的更多用法**
+```java
+        //嵌套的Lambda表达式
+        Callable<Runnable> c1 = () -> () -> System.out.println("Nested Lambda");
+        c1.call().run();
+
+        //用在条件表达式中
+        Callable<Integer> c2 = true ? (() -> 42) : (() -> 24);
+        System.out.println(c2.call());
+
+        //定义一个递归函数，注意需用this限定
+        UnaryOperator<Integer> factorial = i -> i == 0 ? 1 : i * this.factorial.apply(i - 1);
+        System.out.println(factorial.apply(3));
+```
+在Java中，随声明随调用的方式是不行的，比如下面这种：
+```java
+ int five = ( (x, y) -> x + y ) (2, 3); // ERROR! try to call a lambda in-place
+```
+这在C++中是可以的，但是Java中不行。Java的λ表达式只能用作赋值、传参、返回值等。
+#### 四. 其它相关概念
+**4.1 捕获（Capture）**<br>
+
+捕获的概念在于解决在Lambda表达式中我们可以使用哪些外部变量（即除了它自己的参数和内部定义的本地变量）的问题。<br>
+
+答案是：与内部类非常相似，但是有不同点。不同点在于内部类总是持有一个其外部类对象的引用。<br>
+而λ表达式，除非在它的内部用到了其外部类（包围类）对象的方法或者成员，否则它就不持有这个对象的引用。<br>
+
+在Java8以前，如果要在内部类访问外部对象的一个本地变量，那么这个变量必须声明为final才行。在Java8中，这种限制被去掉了，代之以一个新的概念，“effectively final”。<br>
+它的意思是你可以声明为final，也可以不声明final但是按照final来用，也就是一次赋值永不改变。换句话说，保证它加上final前缀后不会出编译错误。<br>
+
+在Java8中，内部类和λ表达式都可以访问effectively final的本地变量。<br>
+
+**4.2 方法引用(Method reference)**
+任何一个λ表达式都可以代表某个函数接口的唯一方法的匿名描述符。我们也可以使用某个类的某个具体方法来代表这个描述符，叫做方法引用。详细描述见原文。<br>
+
+**4.3 生成器函数(Generator function)**
+有时候一个流的数据源不一定是一个已存在的集合对象，也可能是个“生成器函数”。一个生成器函数会产生一系列元素，供给一个流。<br>
+Stream.generate(Supplier<T> s)就是一个生成器函数。其中参数Supplier是一个函数接口，里面有唯一的抽象方法 <T> get()。
+例如：
+```java
+   //生成并打印5个随机数
+   Stream.
+```
+
+
+
+
+
+
+
 
 
 
