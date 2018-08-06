@@ -61,6 +61,16 @@ public class MainActivity extends AppCompatActivity {
         sum();
 
         getVoid();
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("This is from an anonymous class.");
+            }
+        });
+
+        Thread thread1 = new Thread(() -> System.out.println("this is from an anonymous method (lambda exp)."));
+
     }
 
     private void getVoid() {
@@ -73,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
             return x + y;
         };
     }
-
 
     @NonNull
     private Runnable getRunnable() {
