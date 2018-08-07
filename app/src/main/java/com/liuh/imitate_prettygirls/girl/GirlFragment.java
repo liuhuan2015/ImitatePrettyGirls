@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 
 import com.liuh.imitate_prettygirls.R;
 import com.liuh.imitate_prettygirls.app.Constants;
+import com.liuh.imitate_prettygirls.app.RxUtils;
 import com.liuh.imitate_prettygirls.base.PgBaseFragment;
 import com.liuh.imitate_prettygirls.data.bean.GirlsBean;
 import com.liuh.imitate_prettygirls.util.BitmapUtil;
