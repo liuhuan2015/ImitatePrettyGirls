@@ -88,7 +88,7 @@ public class HandlerThread extends Thread {
 }
 ```
 
-具体见HandlerThread-Review.md以及其module。<br>
+具体见[HandlerThread-Review.md](https://github.com/liuhuan2015/ImitatePrettyGirls/blob/master/HandlerThread-Review.md)以及其module。<br>
 
 ##### 2.2 IntentService
 IntentService的特点：<br>
@@ -102,7 +102,7 @@ IntentService的特点：<br>
         ...
   }
 ```  
-具体见IntentService-Review.md以及其module。<br>
+具体见[IntentService-Review.md](https://github.com/liuhuan2015/ImitatePrettyGirls/blob/master/IntentService-Review.md)以及其module。<br>
 
 ##### 2.3 Lambda表达式
 λ表达式由三部分组成：参数列表，箭头（->），以及一个表达式或语句块。<br>
@@ -128,7 +128,7 @@ IntentService的特点：<br>
    //然后再赋值给一个Object
    Object obj = r1;
 ```
-详细见lambda-learn.md以及其module。
+详细见[lambda-learn.md](https://github.com/liuhuan2015/ImitatePrettyGirls/blob/master/lambda-learn/lambda-learn2.md)以及其module。
 
 
 
