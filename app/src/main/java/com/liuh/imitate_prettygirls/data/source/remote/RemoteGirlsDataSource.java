@@ -11,7 +11,7 @@ import rx.schedulers.Schedulers;
 
 /**
  * Date: 2018/7/24 19:54
- * Description:
+ * Description: 使用Retrofit对每一个接口进行具体的实现 + 数据回调处理
  */
 
 public class RemoteGirlsDataSource implements GirlsDataSource {
@@ -37,9 +37,7 @@ public class RemoteGirlsDataSource implements GirlsDataSource {
                     public void onNext(GirlsBean girlsBean) {
                         callback.onGirlsLoaded(girlsBean);
                     }
-                })
-        ;
-
+                });
     }
 
     @Override

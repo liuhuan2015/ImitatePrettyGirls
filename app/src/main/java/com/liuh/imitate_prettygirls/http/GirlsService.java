@@ -9,7 +9,7 @@ import rx.Observable;
 
 /**
  * Date: 2018/7/27 10:43
- * Description:
+ * Description:接口定义
  */
 
 public interface GirlsService {
